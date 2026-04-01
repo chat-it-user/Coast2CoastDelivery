@@ -6,11 +6,19 @@
       </RouterLink>
 
       <!-- Desktop links -->
-      <div class="hidden md:flex space-x-8 font-medium">
-        <RouterLink to="/about"    class="hover:text-blue-400 transition" active-class="text-blue-400">About</RouterLink>
-        <RouterLink to="/training" class="hover:text-blue-400 transition" active-class="text-blue-400">Training</RouterLink>
-        <RouterLink to="/delivery" class="hover:text-blue-400 transition" active-class="text-blue-400">Delivery</RouterLink>
-        <RouterLink to="/contact"  class="hover:text-blue-400 transition" active-class="text-blue-400">Contact</RouterLink>
+      <div class="hidden md:flex items-center space-x-8 font-medium">
+        <RouterLink to="/about"    class="hover:text-blue-400 transition" active-class="text-blue-400">{{ t('nav.about') }}</RouterLink>
+        <RouterLink to="/training" class="hover:text-blue-400 transition" active-class="text-blue-400">{{ t('nav.training') }}</RouterLink>
+        <RouterLink to="/delivery" class="hover:text-blue-400 transition" active-class="text-blue-400">{{ t('nav.delivery') }}</RouterLink>
+        <RouterLink to="/contact"  class="hover:text-blue-400 transition" active-class="text-blue-400">{{ t('nav.contact') }}</RouterLink>
+
+        <!-- Language switcher -->
+        <select v-model="currentLang" @change="changeLang" class="bg-slate-800 text-white text-sm px-2 py-1 rounded border border-slate-600 focus:outline-none cursor-pointer">
+          <option value="en">🇬🇧 EN</option>
+          <option value="de">🇩🇪 DE</option>
+          <option value="fr">🇫🇷 FR</option>
+          <option value="es">🇪🇸 ES</option>
+        </select>
       </div>
 
       <!-- Mobile hamburger -->
@@ -26,10 +34,18 @@
 
     <!-- Mobile dropdown -->
     <div v-if="open" class="md:hidden bg-slate-800 px-6 pb-4 space-y-3 font-medium">
-      <RouterLink to="/about"    @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">About</RouterLink>
-      <RouterLink to="/training" @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">Training</RouterLink>
-      <RouterLink to="/delivery" @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">Delivery</RouterLink>
-      <RouterLink to="/contact"  @click="open = false" class="block hover:text-blue-400 transition py-2" active-class="text-blue-400">Contact</RouterLink>
+      <RouterLink to="/about"    @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">{{ t('nav.about') }}</RouterLink>
+      <RouterLink to="/training" @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">{{ t('nav.training') }}</RouterLink>
+      <RouterLink to="/delivery" @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">{{ t('nav.delivery') }}</RouterLink>
+      <RouterLink to="/contact"  @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">{{ t('nav.contact') }}</RouterLink>
+
+      <!-- Language switcher mobile -->
+      <select v-model="currentLang" @change="changeLang" class="bg-slate-700 text-white text-sm px-2 py-2 rounded border border-slate-600 focus:outline-none w-full cursor-pointer">
+        <option value="en">🇬🇧 English</option>
+        <option value="de">🇩🇪 Deutsch</option>
+        <option value="fr">🇫🇷 Français</option>
+        <option value="es">🇪🇸 Español</option>
+      </select>
     </div>
   </nav>
 </template>
@@ -37,10 +53,17 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
+const { t, locale } = useI18n()
 const open = ref(false)
 const route = useRoute()
+const currentLang = ref(locale.value)
 
-// Close mobile menu on route change
+function changeLang() {
+  locale.value = currentLang.value
+  localStorage.setItem('lang', currentLang.value)
+}
+
 watch(() => route.path, () => { open.value = false })
 </script>

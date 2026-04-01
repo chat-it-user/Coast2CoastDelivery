@@ -1,8 +1,8 @@
 <template>
   <!-- PAGE HERO -->
   <header class="bg-slate-900 text-white py-20 px-6 text-center">
-    <h1 class="text-5xl font-black uppercase tracking-tight mb-4">Our Courses</h1>
-    <p class="text-slate-400 text-lg font-light">Practical, hands-on training built around real offshore passages.</p>
+    <h1 class="text-5xl font-black uppercase tracking-tight mb-4">{{ t('training.page_title') }}</h1>
+    <p class="text-slate-400 text-lg font-light">{{ t('training.page_sub') }}</p>
   </header>
 
   <!-- COURSES -->
@@ -18,9 +18,9 @@
             <span :class="`${course.tickColour} font-bold`">✓</span> {{ point }}
           </li>
         </ul>
-        <RouterLink :to="course.cta.to"
+        <RouterLink :to="`/${course.link}`"
           :class="`mt-8 inline-block text-center ${course.ctaClass} text-white text-sm font-bold py-3 px-6 rounded-sm transition uppercase tracking-widest`">
-          {{ course.cta.label }}
+          {{ course.link === 'delivery' ? t('training.learn_more') : t('training.enquire') }}
         </RouterLink>
       </div>
     </div>
@@ -28,39 +28,22 @@
 
   <!-- CTA -->
   <section class="bg-slate-900 py-16 px-6 text-center">
-    <h2 class="text-3xl font-bold text-white mb-4">Not sure which course is right for you?</h2>
-    <p class="text-slate-400 mb-8">Get in touch and we will help you find the best fit for your goals.</p>
+    <h2 class="text-3xl font-bold text-white mb-4">{{ t('training.cta_title') }}</h2>
+    <p class="text-slate-400 mb-8">{{ t('training.cta_sub') }}</p>
     <RouterLink to="/contact" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-10 rounded-sm transition-all uppercase tracking-widest text-sm">
-      Contact Us
+      {{ t('training.cta_btn') }}
     </RouterLink>
   </section>
 </template>
 
 <script setup>
-const courses = [
-  {
-    icon: '⛵', title: 'ICC Training', colour: 'border-blue-400', tickColour: 'text-blue-500',
-    ctaClass: 'bg-blue-600 hover:bg-blue-500', cta: { to: '/contact', label: 'Enquire' },
-    desc: 'Receive training for the required skills to pass your basic tests. All training is provided on your own boat, meaning you learn in a familiar environment and build real confidence at the helm.',
-    points: ['Training on your own vessel', 'Covers all required ICC competencies', 'Suitable for sail and power'],
-  },
-  {
-    icon: '🌏', title: 'Coastal Passage Training', colour: 'border-blue-500', tickColour: 'text-blue-500',
-    ctaClass: 'bg-blue-600 hover:bg-blue-500', cta: { to: '/contact', label: 'Enquire' },
-    desc: 'Build confidence on extended coastal and offshore passages. Hands-on training covering pilotage, tidal planning, and night sailing — designed to prepare you for real-world conditions.',
-    points: ['Tidal planning and pilotage', 'Night sailing included', 'Real offshore passage experience'],
-  },
-  {
-    icon: '🌊', title: 'Exam Preparation', colour: 'border-blue-600', tickColour: 'text-blue-500',
-    ctaClass: 'bg-blue-600 hover:bg-blue-500', cta: { to: '/contact', label: 'Enquire' },
-    desc: 'Intensive real-world preparation for professional maritime exams. Taught by a qualified examiner who knows exactly what is required to pass with confidence.',
-    points: ['Taught by a qualified Yachtmaster Examiner', 'Practical skills focus', 'Exam technique and confidence building'],
-  },
-  {
-    icon: '🌎', title: 'Delivery Passages', colour: 'border-slate-700', tickColour: 'text-slate-700',
-    ctaClass: 'bg-slate-800 hover:bg-slate-700', cta: { to: '/delivery', label: 'Learn More' },
-    desc: 'Join our professional skippers on live delivery legs. Gain offshore miles and real experience across ocean passages — the most effective way to build sea time towards a professional qualification.',
-    points: ['Real offshore miles logged', 'Sail with professional skippers', 'Ocean and coastal passages'],
-  },
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t, tm } = useI18n()
+
+const courses = computed(() => tm('training.courses').map((c, i) => ({
+  ...c,
+  ctaClass: i < 3 ? 'bg-blue-600 hover:bg-blue-500' : 'bg-slate-800 hover:bg-slate-700',
+})))
 </script>
