@@ -77,6 +77,7 @@ async function handleSubmit() {
       from_name:  form.name,
       from_email: form.email,
       message:    form.message,
+      to_email:   'support@coast2coast.ltd',
     })
     status.value = 'success'
     form.name = form.email = form.message = ''
