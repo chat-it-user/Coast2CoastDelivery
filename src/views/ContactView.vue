@@ -56,7 +56,6 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
-const EMAILJS_PUBLIC_KEY  = 'm6ktYj3SzgbBKEmbo'
 const EMAILJS_SERVICE_ID  = 'service_uc2u5fw'
 const EMAILJS_TEMPLATE_ID = 'template_ai2j0yv'
 
@@ -78,7 +77,7 @@ async function handleSubmit() {
       from_name:  form.name,
       from_email: form.email,
       message:    form.message,
-    }, EMAILJS_PUBLIC_KEY)
+    })
     status.value = 'success'
     form.name = form.email = form.message = ''
   } catch (err) {
