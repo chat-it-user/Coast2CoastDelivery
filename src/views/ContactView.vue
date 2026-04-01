@@ -13,8 +13,8 @@
         <h3 class="text-3xl font-bold mb-6">{{ t('contact.details_title') }}</h3>
         <div class="space-y-4 text-sm opacity-90">
           <p>📍 {{ t('contact.location') }}</p>
-          <p>✉️ info@coast2coasttraining.co.uk</p>
-          <p>📞 07713 197047</p>
+          <p>✉️ support@coast2coast.ltd</p>
+          <p>📞 +44 (0)7713 197047</p>
         </div>
       </div>
 
