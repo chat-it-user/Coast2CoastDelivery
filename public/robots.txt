@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.coast2coasttraining.co.uk/sitemap.xml
