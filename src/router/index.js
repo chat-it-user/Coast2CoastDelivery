@@ -4,6 +4,7 @@ import AboutView    from '../views/AboutView.vue'
 import TrainingView from '../views/TrainingView.vue'
 import DeliveryView from '../views/DeliveryView.vue'
 import ContactView  from '../views/ContactView.vue'
+import TermsView    from '../views/TermsView.vue'
 
 const routes = [
   {
@@ -44,6 +45,14 @@ const routes = [
     meta: {
       title: 'Contact — Coast 2 Coast Training Ltd',
       description: 'Get in touch with Coast 2 Coast Training Ltd to discuss yacht delivery or sailing training. We respond within 24 hours.',
+    },
+  },
+  {
+    path: '/terms',
+    component: TermsView,
+    meta: {
+      title: 'Terms & Conditions — Coast 2 Coast Training Ltd',
+      description: 'Terms and conditions for own-boat training and yacht delivery services provided by Coast 2 Coast Training Ltd.',
     },
   },
   { path: '/:pathMatch(.*)*', redirect: '/' },

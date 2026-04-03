@@ -11,6 +11,7 @@
         <RouterLink to="/about"    class="hover:text-white transition">{{ t('nav.about') }}</RouterLink>
         <RouterLink to="/training" class="hover:text-white transition">{{ t('nav.training') }}</RouterLink>
         <RouterLink to="/contact"  class="hover:text-white transition">{{ t('nav.contact') }}</RouterLink>
+        <RouterLink to="/terms"    class="hover:text-white transition">Terms</RouterLink>
       </div>
       <p>{{ t('footer.copyright', { year }) }}</p>
     </div>
