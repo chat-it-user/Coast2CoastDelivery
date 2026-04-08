@@ -36,7 +36,11 @@
                     class="w-full p-3 border-b-2 border-slate-200 focus:border-blue-500 outline-none transition resize-none bg-transparent"></textarea>
         </div>
 
+        <!-- reCAPTCHA -->
+        <div class="g-recaptcha" data-sitekey="6Ldlpa0sAAAAAOY9DThK9NgIf6u2NKttVFzdNPBe"></div>
+
         <p v-if="status === 'error'"    class="text-red-500 text-sm">{{ t('contact.error') }}</p>
+        <p v-if="status === 'captcha'"  class="text-red-500 text-sm">Please complete the reCAPTCHA.</p>
         <p v-if="status === 'success'"  class="text-green-600 text-sm font-medium">{{ t('contact.success') }}</p>
         <p v-if="status === 'sendfail'" class="text-red-500 text-sm">{{ t('contact.fail') }}</p>
 
@@ -69,11 +73,17 @@ async function handleSubmit() {
     return
   }
 
+  const captchaToken = globalThis.grecaptcha?.getResponse()
+  if (!captchaToken) {
+    status.value = 'captcha'
+    return
+  }
+
   sending.value = true
   status.value  = ''
 
   try {
-    await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+    await globalThis.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
       from_name:  form.name,
       from_email: form.email,
       message:    form.message,
@@ -81,9 +91,11 @@ async function handleSubmit() {
     })
     status.value = 'success'
     form.name = form.email = form.message = ''
+    globalThis.grecaptcha?.reset()
   } catch (err) {
     console.error('EmailJS error:', err)
     status.value = 'sendfail'
+    globalThis.grecaptcha?.reset()
   } finally {
     sending.value = false
   }
