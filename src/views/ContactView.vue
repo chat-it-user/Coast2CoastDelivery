@@ -37,7 +37,7 @@
         </div>
 
         <!-- reCAPTCHA -->
-        <div class="g-recaptcha" data-sitekey="6LdZsa0sAAAAAIttjM_Jw63XPwme8E68vBYvheV0"></div>
+        <div ref="recaptchaEl"></div>
 
         <p v-if="status === 'error'"    class="text-red-500 text-sm">{{ t('contact.error') }}</p>
         <p v-if="status === 'captcha'"  class="text-red-500 text-sm">Please complete the reCAPTCHA.</p>
@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -63,9 +63,29 @@ const { t } = useI18n()
 const EMAILJS_SERVICE_ID  = 'service_uc2u5fw'
 const EMAILJS_TEMPLATE_ID = 'template_ai2j0yv'
 
-const form    = reactive({ name: '', email: '', message: '' })
-const status  = ref('')
-const sending = ref(false)
+const form         = reactive({ name: '', email: '', message: '' })
+const status       = ref('')
+const sending      = ref(false)
+const recaptchaEl  = ref(null)
+
+onMounted(() => {
+  const render = () => {
+    globalThis.grecaptcha.render(recaptchaEl.value, {
+      sitekey: '6LdZsa0sAAAAAIttjM_Jw63XPwme8E68vBYvheV0'
+    })
+  }
+
+  if (globalThis.grecaptcha) {
+    globalThis.grecaptcha.ready(render)
+  } else {
+    const poll = setInterval(() => {
+      if (globalThis.grecaptcha) {
+        clearInterval(poll)
+        globalThis.grecaptcha.ready(render)
+      }
+    }, 100)
+  }
+})
 
 async function handleSubmit() {
   if (!form.name || !form.email || !form.message) {
