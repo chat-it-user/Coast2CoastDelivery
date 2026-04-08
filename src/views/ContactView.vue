@@ -37,7 +37,7 @@
         </div>
 
         <!-- reCAPTCHA -->
-        <div class="g-recaptcha" data-sitekey="6Ldlpa0sAAAAAOY9DThK9NgIf6u2NKttVFzdNPBe"></div>
+        <div class="g-recaptcha" data-sitekey="6LdZsa0sAAAAAIttjM_Jw63XPwme8E68vBYvheV0"></div>
 
         <p v-if="status === 'error'"    class="text-red-500 text-sm">{{ t('contact.error') }}</p>
         <p v-if="status === 'captcha'"  class="text-red-500 text-sm">Please complete the reCAPTCHA.</p>
