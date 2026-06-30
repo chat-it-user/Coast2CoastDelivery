@@ -82,3 +82,12 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { usePageMeta } from '../composables/usePageMeta'
+
+usePageMeta(
+  'Terms & Conditions - Coast 2 Coast Training Ltd',
+  'Terms and conditions for yacht training courses and yacht delivery services. Please read before booking.'
+)
+</script>

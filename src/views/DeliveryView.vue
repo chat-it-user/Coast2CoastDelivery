@@ -57,5 +57,12 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { usePageMeta } from '../composables/usePageMeta'
+
 const { t, tm } = useI18n()
+
+usePageMeta(
+  'Professional Yacht Delivery Worldwide - Coastal & Ocean Passages',
+  'Expert yacht delivery services for coastal and ocean passages. RYA qualified skippers, crew positions available, berth-to-berth delivery service worldwide.'
+)
 </script>

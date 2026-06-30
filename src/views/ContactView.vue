@@ -57,8 +57,14 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { usePageMeta } from '../composables/usePageMeta'
 
 const { t } = useI18n()
+
+usePageMeta(
+  'Contact Coast 2 Coast Training - Sailing Courses & Delivery',
+  'Get in touch for yacht training, exam preparation, or delivery services. Based in Portsmouth, serving clients worldwide. Call +44 7713 197047.'
+)
 
 const EMAILJS_SERVICE_ID  = 'service_uc2u5fw'
 const EMAILJS_TEMPLATE_ID = 'template_ai2j0yv'

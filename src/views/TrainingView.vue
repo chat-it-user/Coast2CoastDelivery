@@ -39,8 +39,14 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { usePageMeta } from '../composables/usePageMeta'
 
 const { t, tm } = useI18n()
+
+usePageMeta(
+  'Sailing Training Courses - RYA Yachtmaster & ICC Training',
+  'Professional sailing training courses including ICC certification, RYA Yachtmaster exam prep, coastal passage training. Hands-on instruction by qualified RYA examiner.'
+)
 
 const courses = computed(() => tm('training.courses').map((c, i) => ({
   ...c,

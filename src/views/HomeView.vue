@@ -43,5 +43,12 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { usePageMeta } from '../composables/usePageMeta'
+
 const { t } = useI18n()
+
+usePageMeta(
+  'Coast 2 Coast Training Ltd — Yacht Delivery & Sailing Training',
+  'Professional yacht delivery and RYA sailing training worldwide. Yachtmaster Instructor & Examiner. ICC training, coastal passages, offshore delivery passages.'
+)
 </script>

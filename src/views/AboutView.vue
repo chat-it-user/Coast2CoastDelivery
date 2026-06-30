@@ -62,5 +62,12 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { usePageMeta } from '../composables/usePageMeta'
+
 const { t } = useI18n()
+
+usePageMeta(
+  'About Jonathan - RYA Yachtmaster Instructor & Examiner',
+  'Meet Jonathan, RYA Yachtmaster Instructor & Examiner with tens of thousands of offshore miles. Leading sailing instructor and yacht delivery expert.'
+)
 </script>
