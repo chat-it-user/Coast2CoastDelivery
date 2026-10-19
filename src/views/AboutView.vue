@@ -77,6 +77,6 @@ const { t } = useI18n()
 
 usePageMeta(
   'About Us — Coast 2 Coast Delivery',
-  'Meet Jonathan, STCW-trained Master 200GT and RYA Yachtmaster Examiner with tens of thousands of offshore miles, skippering yacht deliveries worldwide.'
+  'Meet Jonathan, STCW-trained Yachtmaster Offshore and RYA Yachtmaster Examiner with tens of thousands of offshore miles, skippering yacht deliveries worldwide.'
 )
 </script>
