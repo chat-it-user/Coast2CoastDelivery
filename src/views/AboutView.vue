@@ -11,16 +11,17 @@
 
       <!-- Photo -->
       <div class="w-full md:w-1/3 flex-shrink-0">
-        <img src="/src/assets/jonathan.jpeg" alt="Jonathan — Founder & Lead Instructor" class="rounded-full w-full object-cover aspect-square shadow-md">
+        <img src="/src/assets/jonathan.jpeg" alt="Jonathan — Founder & Delivery Skipper" class="rounded-full w-full object-cover aspect-square shadow-md">
       </div>
 
       <!-- Bio -->
       <div class="flex-1">
-        <p class="text-xs uppercase tracking-widest text-blue-500 font-bold mb-2">Founder &amp; Lead Instructor</p>
+        <p class="text-xs uppercase tracking-widest text-blue-500 font-bold mb-2">{{ t('about.role') }}</p>
         <h2 class="text-4xl font-black text-slate-900 mb-6">Jonathan</h2>
         <p class="text-slate-600 leading-relaxed mb-4">{{ t('about.bio_p1') }}</p>
         <p class="text-slate-600 leading-relaxed mb-4">{{ t('about.bio_p2') }}</p>
         <p class="text-slate-600 leading-relaxed mb-8">{{ t('about.bio_p3') }}</p>
+        <p class="text-slate-600 leading-relaxed mb-8">{{ t('about.bio_p4') }}</p>
 
         <h3 class="text-lg font-bold text-slate-800 mb-4">{{ t('about.cred_title') }}</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -39,6 +40,14 @@
           <div class="bg-slate-100 rounded-sm p-4 border-l-4 border-slate-700">
             <p class="font-bold text-slate-800">{{ t('about.cred_4_title') }}</p>
             <p class="text-sm text-slate-500">{{ t('about.cred_4_desc') }}</p>
+          </div>
+          <div class="bg-slate-100 rounded-sm p-4 border-l-4 border-blue-600">
+            <p class="font-bold text-slate-800">{{ t('about.cred_5_title') }}</p>
+            <p class="text-sm text-slate-500">{{ t('about.cred_5_desc') }}</p>
+          </div>
+          <div class="bg-slate-100 rounded-sm p-4 border-l-4 border-blue-600">
+            <p class="font-bold text-slate-800">{{ t('about.cred_6_title') }}</p>
+            <p class="text-sm text-slate-500">{{ t('about.cred_6_desc') }}</p>
           </div>
         </div>
       </div>
@@ -67,7 +76,7 @@ import { usePageMeta } from '../composables/usePageMeta'
 const { t } = useI18n()
 
 usePageMeta(
-  'About Jonathan - RYA Yachtmaster Instructor & Examiner',
-  'Meet Jonathan, RYA Yachtmaster Instructor & Examiner with tens of thousands of offshore miles. Leading sailing instructor and yacht delivery expert.'
+  'About Us — Coast 2 Coast Delivery',
+  'Meet Jonathan, STCW-trained Master 200GT and RYA Yachtmaster Examiner with tens of thousands of offshore miles, skippering yacht deliveries worldwide.'
 )
 </script>

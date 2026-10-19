@@ -2,15 +2,15 @@
   <nav class="sticky top-0 z-50 bg-slate-900 text-white shadow-lg">
     <div class="flex justify-between items-center px-6 py-4">
       <RouterLink to="/" class="text-xl font-bold tracking-tighter">
-        COAST 2 COAST <span class="text-blue-400 font-light underline decoration-1">TRAINING</span>
+        COAST 2 COAST <span class="text-blue-400 font-light underline decoration-1">DELIVERY</span>
       </RouterLink>
 
       <!-- Desktop links -->
       <div class="hidden md:flex items-center space-x-8 font-medium">
-        <RouterLink to="/about"    class="hover:text-blue-400 transition" active-class="text-blue-400">{{ t('nav.about') }}</RouterLink>
-        <RouterLink to="/training" class="hover:text-blue-400 transition" active-class="text-blue-400">{{ t('nav.training') }}</RouterLink>
-        <RouterLink to="/delivery" class="hover:text-blue-400 transition" active-class="text-blue-400">{{ t('nav.delivery') }}</RouterLink>
-        <RouterLink to="/contact"  class="hover:text-blue-400 transition" active-class="text-blue-400">{{ t('nav.contact') }}</RouterLink>
+        <RouterLink to="/about"        class="hover:text-blue-400 transition" active-class="text-blue-400">{{ t('nav.about') }}</RouterLink>
+        <RouterLink to="/delivery"     class="hover:text-blue-400 transition" active-class="text-blue-400">{{ t('nav.delivery') }}</RouterLink>
+        <RouterLink to="/testimonials" class="hover:text-blue-400 transition" active-class="text-blue-400">{{ t('nav.testimonials') }}</RouterLink>
+        <RouterLink to="/contact"      class="hover:text-blue-400 transition" active-class="text-blue-400">{{ t('nav.contact') }}</RouterLink>
 
         <!-- Language switcher -->
         <select v-model="currentLang" @change="changeLang" class="bg-slate-800 text-white text-sm px-2 py-1 rounded border border-slate-600 focus:outline-none cursor-pointer">
@@ -34,10 +34,10 @@
 
     <!-- Mobile dropdown -->
     <div v-if="open" class="md:hidden bg-slate-800 px-6 pb-4 space-y-3 font-medium">
-      <RouterLink to="/about"    @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">{{ t('nav.about') }}</RouterLink>
-      <RouterLink to="/training" @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">{{ t('nav.training') }}</RouterLink>
-      <RouterLink to="/delivery" @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">{{ t('nav.delivery') }}</RouterLink>
-      <RouterLink to="/contact"  @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">{{ t('nav.contact') }}</RouterLink>
+      <RouterLink to="/about"        @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">{{ t('nav.about') }}</RouterLink>
+      <RouterLink to="/delivery"     @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">{{ t('nav.delivery') }}</RouterLink>
+      <RouterLink to="/testimonials" @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">{{ t('nav.testimonials') }}</RouterLink>
+      <RouterLink to="/contact"      @click="open = false" class="block hover:text-blue-400 transition py-2 border-b border-slate-700" active-class="text-blue-400">{{ t('nav.contact') }}</RouterLink>
 
       <!-- Language switcher mobile -->
       <select v-model="currentLang" @change="changeLang" class="bg-slate-700 text-white text-sm px-2 py-2 rounded border border-slate-600 focus:outline-none w-full cursor-pointer">

@@ -14,7 +14,8 @@
         <div class="space-y-4 text-sm opacity-90">
           <p>📍 {{ t('contact.location') }}</p>
           <p>✉️ support@coast2coast.ltd</p>
-          <p>📞 +44 (0)7713 197047</p>
+          <p>📞 🇬🇧 <a href="tel:+447713197047" class="hover:underline">+44 (0)7713 197047</a></p>
+          <p>📞 🇫🇷 <a href="tel:+33753049598" class="hover:underline">+33 (0)7 53 04 95 98</a></p>
         </div>
       </div>
 
@@ -32,7 +33,7 @@
         </div>
         <div>
           <label for="contact-message" class="block text-sm font-medium text-slate-600 mb-1">{{ t('contact.message') }}</label>
-          <textarea id="contact-message" v-model="form.message" rows="4"
+          <textarea id="contact-message" v-model="form.message" rows="4" :placeholder="t('contact.message_hint')"
                     class="w-full p-3 border-b-2 border-slate-200 focus:border-blue-500 outline-none transition resize-none bg-transparent"></textarea>
         </div>
 
@@ -62,8 +63,8 @@ import { usePageMeta } from '../composables/usePageMeta'
 const { t } = useI18n()
 
 usePageMeta(
-  'Contact Coast 2 Coast Training - Sailing Courses & Delivery',
-  'Get in touch for yacht training, exam preparation, or delivery services. Based in Portsmouth, serving clients worldwide. Call +44 7713 197047.'
+  'Contact — Coast 2 Coast Delivery',
+  'Get in touch to discuss your yacht delivery. Tell us your vessel, route and timing — we respond within 24 hours. Call +44 7713 197047.'
 )
 
 const EMAILJS_SERVICE_ID  = 'service_uc2u5fw'
